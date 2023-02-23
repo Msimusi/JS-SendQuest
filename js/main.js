@@ -17,16 +17,17 @@ const letters = [
 
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   count: 0,
-  date: new Date("1970-01-01").getTime(),
+  date: new Date("1970-01-01"),
 };
 
 const progressRate = document.getElementById("achievement-count");
 progressRate.innerText = `Task Done ${achievements.count} / 14`;
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("main button");
 const now = new Date();
 const hour = now.getHours();
 const min = now.getMinutes();
+const TimeToReupload = 1000 * 3600 * 23;
 
 // const buttonClassify = () => {
 buttons.forEach((button, number) => {
@@ -44,24 +45,30 @@ buttons.forEach((button, number) => {
 
   if (timeOk && rightOrder) {
     button.classList.remove("disabled");
+    button.innerText = "기상!";
   }
 });
+
+// window.addEventListener("load", buttonClassify);
 
 const taskToDo = document.querySelector("button.not-confirmed:not(.disabled)");
 
 const taskConfirm = () => {
-  if (now < achievements.date) {
+  if (now <= achievements.date + TimeToReupload) {
     alert("Can confirm only once a day");
   } else {
     achievements.count++;
     achievements.date = now;
     localStorage.setItem("achievements", JSON.stringify(achievements));
+    // buttonClassify();
     alert(letters[achievements.count - 1]);
     location.reload();
   }
 };
 
-taskToDo.addEventListener("click", taskConfirm);
+if (taskToDo) {
+  taskToDo.addEventListener("click", taskConfirm);
+}
 
 const taskConfirmed = document.querySelectorAll("button.confirmed");
 
@@ -81,4 +88,11 @@ taskDisabled.forEach((button, index) => {
   button.addEventListener("click", notAvailable);
 });
 
-// window.addEventListener("load", buttonClassify);
+const reinitializeBtn = document.getElementById("reinitialize");
+
+const reinitialize = () => {
+  localStorage.removeItem("achievements");
+  location.reload();
+};
+
+reinitializeBtn.addEventListener("click", reinitialize);

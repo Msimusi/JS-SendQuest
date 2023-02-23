@@ -1,10 +1,12 @@
 body {
   background-color: #f2f2f2;
+  padding: 3%;
 }
 
 main {
   max-width: 1200px;
   margin: 0 auto;
+
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -57,17 +59,42 @@ main {
   font-weight: 600;
 }
 
-#achievement-count {
-  text-align: right;
-  font-size: 24px;
-  padding-right: 40px;
-  font-weight: 600;
-}
-
 button.disabled {
   background-color: gray;
   cursor: pointer;
 }
 button.disabled:hover {
   background-color: rgb(53, 53, 53);
+}
+
+header {
+  padding: 2% 3%;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header-line {
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+#achievement-count {
+  text-align: right;
+
+  width: 50%;
+}
+
+#reinitialize {
+  background-color: red;
+  color: white;
+  width: 20%;
+  padding: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  display: inline;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: brown;
 }
