@@ -70,7 +70,7 @@ button.disabled:hover {
 header {
   max-width: 1200px;
   padding: 2% 3%;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -84,6 +84,8 @@ header {
 #achievement-count {
   text-align: right;
   width: 50%;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 #reinitialize {
@@ -91,7 +93,7 @@ header {
   color: white;
   width: 20%;
   padding: 5px;
-  font-size: 24px;
+  font-size: 100%;
   font-weight: 600;
   display: inline;
   border-radius: 5px;
