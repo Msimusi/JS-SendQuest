@@ -15,25 +15,24 @@ const letters = [
   앞으로 할 작업들
   - 편지들 (쒯)
   - 편지 작성했을 경우 해당 버튼에 편지 아이콘 출력하기
-  - 편지를 좀 더 가독성 있게 전달하는 법 궁리..
-  `,
-  "Letter 2",
-  "Letter 3",
-  "Letter 4",
-  "Letter 5",
-  "Letter 6",
-  "Letter 7",
-  "Letter 8",
-  "Letter 9",
-  "Letter 10",
-  "Letter 11",
-  "Letter 12",
-  "Letter 13",
-  "Letter 14",
+  - 편지를 좀 더 가독성 있게 전달하는 법 궁리..`,
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "asdasdasd",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
 
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
-  count: 0,
+  count: 2,
   date: new Date("1970-01-01"),
 };
 
@@ -45,14 +44,21 @@ const now = new Date();
 const hour = now.getHours();
 const min = now.getMinutes();
 const TimeToReupload = 1000 * 3600 * 23;
+let mailIcon = {};
 
 // const buttonClassify = () => {
 buttons.forEach((button, number) => {
+  // console.dir(button);
+  // console.log("children before : ", button.children);
+
   if (achievements.count > number) {
     button.classList.replace("not-confirmed", "confirmed");
     button.classList.remove("disabled");
     button.innerText = "Done!";
   }
+
+  // console.dir(button);
+  // console.log(button.children);
 
   const todayNoMore = Boolean(achievements.date != now.getDate());
 
@@ -65,7 +71,14 @@ buttons.forEach((button, number) => {
     button.classList.remove("disabled");
     button.innerText = "기상!";
   }
+
+  if (letters[number] != "") {
+    const icon = document.createElement("i");
+    icon.className = "fa-regular fa-envelope";
+    button.appendChild(icon);
+  }
 });
+
 // };
 
 const taskToDo = document.querySelector("button.not-confirmed:not(.disabled)");
@@ -102,6 +115,7 @@ taskDisabled.forEach((button, index) => {
       alert("정해진 시간이 아니거나 아직 차례가 아닙니다.");
     }
   };
+
   button.addEventListener("click", notAvailable);
 });
 
