@@ -63,7 +63,7 @@ buttons.forEach((button, number) => {
   const todayNoMore = Boolean(achievements.date != now.getDate());
 
   const timeOk = Boolean(
-    (hour === 5 && min >= 30) || (hour === 6 && min <= 30)
+    (hour === 6 && min >= 30) || (hour === 7 && min <= 30)
   );
   const rightOrder = Boolean(number === achievements.count);
 
