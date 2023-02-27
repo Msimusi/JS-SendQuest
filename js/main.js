@@ -95,7 +95,7 @@ buttons.forEach((button, number) => {
 
   const timeOk = Boolean(
     // hour >= 0
-    (hour === 6 && min >= 30) || (hour === 7 && min <= 30)
+    (hour === 5 && min >= 30) || (hour === 6 && min <= 30)
   );
   const rightOrder = Boolean(number === achievements.count);
 
