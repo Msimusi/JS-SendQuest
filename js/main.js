@@ -32,7 +32,7 @@ const letters = [
 ];
 
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
-  count: 2,
+  count: 0,
   date: new Date("1970-01-01"),
 };
 
