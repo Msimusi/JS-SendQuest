@@ -16,19 +16,30 @@ const letters = [
   - 편지들 (쒯)
   - 편지 작성했을 경우 해당 버튼에 편지 아이콘 출력하기
   - 편지를 좀 더 가독성 있게 전달하는 법 궁리..`,
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "asdasdasd",
-  "",
-  "",
-  "",
-  "",
-  "",
+  `너 군대 갔을 때도 딱히 편지 쓴적은 없는데, 갑자기 쓸라니 머리에 글이 안떠오르긴 하는구만..
+  뻘쭘하니까 일단 변경점부터 정리해보자면
+  
+  1. 편지를 작성한 경우, 해당 횟수차에 편지 아이콘 추가.
+  2. 초기화 버튼 날림
+  3. 인증가능시간 6시반~7시반으로 조정.
+
+  일단 아이콘 크기 및 위치는 다양한 크기의 화면을 고려한 것은 아니라서 버튼을 삐져나가거나 하는 일이 있을 수도 있어.
+  그럴 땐 그냥 인증 스샷 찍어서 올려준거 보고 내가 살포시 수정해볼게
+
+  혹시 인증이 제대로 안되거나 
+  `,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
+  ``,
 ];
 
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
@@ -36,7 +47,7 @@ const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   date: new Date("1970-01-01"),
 };
 
-const progressRate = document.getElementById("achievement-count");
+const progressRate = document.getElementById("progress-rate");
 progressRate.innerText = `Task Done ${achievements.count} / 14`;
 
 const buttons = document.querySelectorAll("main button");
@@ -48,22 +59,17 @@ let mailIcon = {};
 
 // const buttonClassify = () => {
 buttons.forEach((button, number) => {
-  // console.dir(button);
-  // console.log("children before : ", button.children);
-
   if (achievements.count > number) {
     button.classList.replace("not-confirmed", "confirmed");
     button.classList.remove("disabled");
     button.innerText = "Done!";
   }
 
-  // console.dir(button);
-  // console.log(button.children);
-
   const todayNoMore = Boolean(achievements.date != now.getDate());
 
   const timeOk = Boolean(
-    (hour === 6 && min >= 30) || (hour === 7 && min <= 30)
+    hour >= 0
+    // (hour === 6 && min >= 30) || (hour === 7 && min <= 30)
   );
   const rightOrder = Boolean(number === achievements.count);
 
@@ -101,6 +107,7 @@ const taskConfirmed = document.querySelectorAll("button.confirmed");
 taskConfirmed.forEach((button, index) => {
   const letterAgain = () => {
     alert(letters[index]);
+    location.reload();
   };
   button.addEventListener("click", letterAgain);
 });
@@ -114,6 +121,7 @@ taskDisabled.forEach((button, index) => {
     } else {
       alert("정해진 시간이 아니거나 아직 차례가 아닙니다.");
     }
+    location.reload();
   };
 
   button.addEventListener("click", notAvailable);
