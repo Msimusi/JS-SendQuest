@@ -95,7 +95,6 @@ header {
   border-radius: 5px;
   cursor: pointer;
   border-color: brown;
-  display: none;
 }
 
 .task i {
