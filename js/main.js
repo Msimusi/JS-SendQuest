@@ -135,7 +135,7 @@ const letters = [
   ``,
 ];
 
-const mode_dev = true;
+const mode_dev = false;
 
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   count: 0,
