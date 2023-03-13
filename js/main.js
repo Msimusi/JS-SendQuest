@@ -67,7 +67,7 @@ buttons.forEach((button, number) => {
   if (achievements.count > number) {
     button.classList.replace("not-confirmed", "confirmed");
     button.classList.remove("disabled");
-    button.innerText = achievements.time[number];
+    button.innerText = achievements.time[number - 1];
   }
 
   const todayNoMore = mode_dev
