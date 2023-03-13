@@ -4,10 +4,12 @@ const achievements = JSON.parse(localStorage.getItem("achievements")) || {
 };
 
 if (!("number" in achievements)) {
+  achievements.count = 0;
+  achievements.date = new Date("1970-01-01");
   achievements.number = 14;
   achievements.hour = 6;
   achievements.min = 30;
-  achievements.time = [];
+  achievements.time = [""];
   localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
