@@ -16,12 +16,9 @@ if (isMissingField) {
   achievements.hour = 6;
   achievements.min = 30;
   achievements.time = [];
-  localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
-const progressRate = document.getElementById("progress-rate");
-const now = new Date();
-const mode_dev = false;
+localStorage.setItem("achievements", JSON.stringify(achievements));
 
 const initialize = () => {
   const buttonList = document.getElementById("buttonList");
@@ -39,6 +36,7 @@ const initialize = () => {
 
 initialize();
 
+const progressRate = document.getElementById("progress-rate");
 const buttons = document.querySelectorAll("main button");
 const settings = document.querySelector(".fa-cog");
 const devMode = document.getElementById("devMode");
@@ -50,6 +48,8 @@ const goalNumber = document.getElementById("goalNumber");
 const goalButton = document.getElementById("goalButton");
 const rule = document.getElementById("rule");
 
+const now = new Date();
+const mode_dev = false;
 devMode.style.display = "none";
 goalNumber.value = achievements.number;
 goalHour.value = achievements.hour;
