@@ -19,7 +19,7 @@ if (!("number" in achievements)) {
 
 const progressRate = document.getElementById("progress-rate");
 const now = new Date();
-const mode_dev = true;
+const mode_dev = false;
 
 const initialize = () => {
   const buttonList = document.getElementById("buttonList");
@@ -107,7 +107,7 @@ const taskConfirm = () => {
   const min = String(now.getMinutes()).padStart(2, 0);
 
   achievements.count++;
-  achievements.date = day;
+  achievements.date = now.getDate();
   achievements.time.push(`${month}.${day}
   ${hour}:${min}`);
   localStorage.setItem("achievements", JSON.stringify(achievements));
