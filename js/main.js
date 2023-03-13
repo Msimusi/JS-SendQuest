@@ -1,16 +1,19 @@
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
-  number: 14,
-  hour: 6,
-  min: 30,
   count: 0,
   date: new Date("1970-01-01"),
   time: [],
 };
 
+if (!("number" in achievements)) {
+  achievements.number = 14;
+  achievements.hour = 6;
+  achievements.min = 30;
+  localStorage.setItem("achievements", JSON.stringify(achievements));
+}
+
 const progressRate = document.getElementById("progress-rate");
 const now = new Date();
 const mode_dev = true;
-let letter = "";
 
 const initialize = () => {
   const buttonList = document.getElementById("buttonList");
@@ -103,15 +106,13 @@ const taskConfirm = () => {
   ${hour}:${min}`);
   localStorage.setItem("achievements", JSON.stringify(achievements));
 
-  letter = `${achievements.count}번째 달성을 축하합니다. (달성률 ${(
+  alert(`${achievements.count}번째 달성을 축하합니다. (달성률 ${(
     (achievements.count / achievements.number) *
     100
   ).toFixed(1)}%)
   
 인증 시각 : ${month}월 ${day}일 ${hour}시 ${min}분
-  `;
-
-  alert(letter);
+  `);
   location.reload();
 };
 
