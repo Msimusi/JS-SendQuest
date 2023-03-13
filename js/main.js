@@ -4,7 +4,7 @@ const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   number: 14,
   hour: 6,
   min: 30,
-  time: [""],
+  time: [],
 };
 
 if (!("number" in achievements)) {
@@ -67,7 +67,7 @@ buttons.forEach((button, number) => {
   if (achievements.count > number) {
     button.classList.replace("not-confirmed", "confirmed");
     button.classList.remove("disabled");
-    button.innerText = achievements.time[number - 1];
+    button.innerText = achievements.time[number];
   }
 
   const todayNoMore = mode_dev
