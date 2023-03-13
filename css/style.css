@@ -6,7 +6,7 @@ body {
   align-items: center;
 }
 
-main {
+#buttonList {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -48,10 +48,22 @@ main {
   background-color: #54ae54;
 }
 
+.title-line {
+  display: flex;
+  align-items: center;
+}
+.title-left {
+  width: 5%;
+}
 .title {
+  width: 90%;
   text-align: center;
   font-size: 40px;
   font-weight: 600;
+}
+
+.title-right {
+  width: 5%;
 }
 
 button.disabled {
@@ -86,8 +98,8 @@ header {
 #reinitialize {
   background-color: red;
   color: white;
-  min-width: 150px;
-  width: 20%;
+  min-width: 120px;
+  width: 15%;
   padding: 5px;
   font-size: 100%;
   font-weight: 600;
@@ -103,4 +115,33 @@ header {
   top: 68%;
   color: white;
   font-size: 1.5rem;
+}
+
+#devMode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 140px;
+  margin: 20px 0;
+}
+
+#goalInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+}
+
+#goalNumber,
+#goalHour,
+#goalMin {
+  width: 30px;
+  margin-top: 10px;
+}
+
+#goalButton {
+  width: 100px;
+  margin-top: 5px;
+  font-weight: 600;
 }

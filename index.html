@@ -10,62 +10,44 @@
   </head>
   <body>
     <header>
-      <h1 class="title">Send Quest</h1>
+      <div class="title-line">
+        <div class="title-left"></div>
+        <h1 class="title">Send Quest</h1>
+        <span class="title-right"><i class="fas fa-cog fa-lg"></i></span>
+      </div>
       <br />
       <div class="header-line">
-        <button id="reinitialize">초기화</button>
         <h3 id="progress-rate">Achievement</h3>
       </div>
+      <div id="devMode">
+        <button id="reinitialize">초기화</button>
+        <form id="goalInput" action="POST">
+          <label>목표 재설정</label>
+          <div>
+            횟수 :
+            <input type="number" id="goalNumber" /> 회
+          </div>
+          <div id="timeInput">
+            시각 :
+            <input type="number" id="goalHour" /> 시
+            <input type="number" id="goalMin" /> 분
+          </div>
+          <input type="button" id="goalButton" value="재설정" />
+        </form>
+      </div>
       <div>
-        <span
-          >규칙 1 : 5시 반에서 6시 반 사이에 '기상!' 버튼을 터치하여 인증하세요.
+        <span id="rule"
+          >규칙 1 : 4시에서 6시 반 사이에 '기상!' 버튼을 터치하여 인증하세요.
           <br />
           규칙 2 : 하루에 한번만 인증가능합니다.
         </span>
       </div>
     </header>
     <main>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">1st</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">2nd</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">3rd</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">4th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">5th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">6th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">7th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">8th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">9th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">10th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">11th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">12th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">13th</button>
-      </div>
-      <div class="task">
-        <button class="task-button not-confirmed disabled">14th</button>
+      <div id="buttonList">
+        <div class="task">
+          <button class="task-button not-confirmed disabled"></button>
+        </div>
       </div>
     </main>
 
