@@ -7,7 +7,9 @@ const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   time: [],
 };
 
-if (!("number" in achievements)) {
+const requiredFields = ["count", "date", "number", "hour", "min", "time"];
+const isMissingField = requiredFields.some((field) => !(field in achievements));
+if (isMissingField) {
   achievements.count = 0;
   achievements.date = new Date("1970-01-01");
   achievements.number = 14;
