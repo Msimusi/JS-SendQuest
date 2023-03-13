@@ -13,7 +13,7 @@ if (!("number" in achievements)) {
   achievements.number = 14;
   achievements.hour = 6;
   achievements.min = 30;
-  achievements.time = [""];
+  achievements.time = [];
   localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
