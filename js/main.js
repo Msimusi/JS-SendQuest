@@ -1,3 +1,4 @@
+const now = new Date();
 const achievements = JSON.parse(localStorage.getItem("achievements")) || {
   count: 0,
   date: new Date("1970-01-01"),
@@ -8,8 +9,7 @@ const achievements = JSON.parse(localStorage.getItem("achievements")) || {
 };
 
 const requiredFields = ["count", "date", "number", "hour", "min", "time"];
-const isMissingField = requiredFields.some((field) => !(field in achievements));
-if (isMissingField) {
+if (requiredFields.some((field) => !(field in achievements))) {
   achievements.count = 0;
   achievements.date = new Date("1970-01-01");
   achievements.number = 14;
@@ -18,12 +18,11 @@ if (isMissingField) {
   achievements.time = [];
 }
 
-localStorage.setItem("achievements", JSON.stringify(achievements));
+const saveAchievements = () => {
+  localStorage.setItem("achievements", JSON.stringify(achievements));
+};
 
-const initialize = () => {
-  const buttonList = document.getElementById("buttonList");
-  const numButtons = achievements.number;
-
+const createButton = () => {
   for (let i = 1; i < numButtons; i++) {
     const newButtonDiv = document.createElement("div");
     const newButton = document.createElement("button");
@@ -34,7 +33,11 @@ const initialize = () => {
   }
 };
 
-initialize();
+saveAchievements();
+
+const buttonList = document.getElementById("buttonList");
+const numButtons = achievements.number;
+createButton();
 
 const progressRate = document.getElementById("progress-rate");
 const buttons = document.querySelectorAll("main button");
@@ -48,7 +51,6 @@ const goalNumber = document.getElementById("goalNumber");
 const goalButton = document.getElementById("goalButton");
 const rule = document.getElementById("rule");
 
-const now = new Date();
 const mode_dev = false;
 devMode.style.display = "none";
 goalNumber.value = achievements.number;
@@ -59,7 +61,6 @@ rule.innerText = `규칙 1 : 4시에서 ${achievements.hour}시 ${achievements.m
 
 규칙 2 : 하루에 한번만 인증가능합니다.`;
 
-// const buttonClassify = () => {
 buttons.forEach((button, number) => {
   const hour = now.getHours();
   const min = now.getMinutes();
@@ -112,7 +113,7 @@ const taskConfirm = () => {
   achievements.date = now.getDate();
   achievements.time.push(`${month}.${day}
   ${hour}:${min}`);
-  localStorage.setItem("achievements", JSON.stringify(achievements));
+  saveAchievements();
 
   alert(`${achievements.count}번째 달성을 축하합니다. (달성률 ${(
     (achievements.count / achievements.number) *
@@ -172,7 +173,7 @@ const updateAchievements = () => {
   achievements.number = newNumber;
   achievements.hour = newHour;
   achievements.min = newMin;
-  localStorage.setItem("achievements", JSON.stringify(achievements));
+  saveAchievements();
   location.reload();
 };
 
